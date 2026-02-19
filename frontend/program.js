@@ -3,14 +3,15 @@ myButton = document.getElementById("btn_enviar")
 myButton.addEventListener(
     
     "click", async function (){
+        let mySelection = document.getElementById("localidad");
+        let url = "http://127.0.0.1:8000/getjson?localidad="+mySelection.value;
+        console.log(url)
+        let response = await fetch("http://127.0.0.1:8000/getjson?localidad="+mySelection.value);
 
-        let response = await fetch("http://127.0.0.1:8000")
         let data = await response.json();
 
-        myResult = document.getElementById("txt_resultado")
+        let myResult = document.getElementById("txt_resultado");
 
-        myresult.innerText = data;
-
-
+        myResult.innerText = data.mensaje;
     }
 )
