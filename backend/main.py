@@ -1,3 +1,4 @@
+from backend.localidades import llamarAPI
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -15,20 +16,18 @@ app.add_middleware(
     allow_headers = ["*"]
 )
 
-@app.get("/")
+@app.get("/getjson")
 
-def saludar():
-    saludo = {
-        "mensaje" : "Hola Mundo!!! API OK"
-    }
+def getJSON(localidad:int):
+    #Conectarse a la API de Jardín Botánico
 
-    return saludo
-
-@app.get("/despedir")
-
-def despedirse():
-    mensaje = {
-        "mensaje" : "Adiós mundo cruel!!! API OK"
-    }
-
-    return mensaje
+    if localidad == 8:
+        #Buscar el bbox de Kennedy
+        nombre = "Kennedy"
+    elif localidad == 7:
+        #Buscar el bbox de Bosa
+        nombre = "Bosa"
+    elif localidad == 19:
+        #Buscar el bbox de Ciudad Bolívar
+        nombre = "Ciudad Bolívar"
+    return llamarAPI(localidad)

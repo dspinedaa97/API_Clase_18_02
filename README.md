@@ -16,4 +16,6 @@ Con la biblioteca FastAPI (para crear la API)
 
 Ejecutar el servidor: uvicorn main:app --reload
 
-http://127.0.0.1:8000/docs muestra la documentación de la APUI
+http://127.0.0.1:8000/docs muestra la documentación de la API
+
+Instalar geopandas y requests
